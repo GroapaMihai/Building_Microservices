@@ -5,7 +5,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(url = "http://localhost:8080", value = "DEPARTMENT-SERVICE")
+// Eureka Client will internally use load balancing to pick from available DEPARTMENT-SERVICE instances
+// DEPARTMENT-SERVICE is the spring.application.name property value of the department-service microservice
+@FeignClient(name = "DEPARTMENT-SERVICE")
 public interface APIClient {
 
     @GetMapping("/api/departments/{departmentCode}")
