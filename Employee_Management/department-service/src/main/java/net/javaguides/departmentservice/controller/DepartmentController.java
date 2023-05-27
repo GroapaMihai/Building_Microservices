@@ -3,6 +3,8 @@ package net.javaguides.departmentservice.controller;
 import lombok.AllArgsConstructor;
 import net.javaguides.departmentservice.dto.DepartmentDto;
 import net.javaguides.departmentservice.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/departments")
 @AllArgsConstructor
 public class DepartmentController {
+
+    private static final Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 
     private DepartmentService departmentService;
 
@@ -23,6 +27,7 @@ public class DepartmentController {
 
     @GetMapping("{departmentCode}")
     public ResponseEntity<DepartmentDto> getDepartment(@PathVariable("departmentCode") String departmentCode) {
+        logger.info("getDepartment with code " + departmentCode);
         DepartmentDto departmentDto = departmentService.getDepartmentByCode(departmentCode);
 
         return new ResponseEntity<>(departmentDto, HttpStatus.OK);
