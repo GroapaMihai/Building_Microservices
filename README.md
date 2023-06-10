@@ -17,7 +17,6 @@ There are 2 possible approaches:
 7. Run springboot-restful-webservices image:
 		docker run --name springboot-mysql-container --network springboot-mysql-net -p 8080:8080 -d springboot-restful-webservices
 
-
 	II. Using docker-compose file to deploy and run the images in separate docker containers.
 1. We create a docker-compose.yml file at project root level. It internally uses the Dockerfile tu build the springboot-restful-webservices image.
 2. Run the following command:
