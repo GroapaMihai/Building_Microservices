@@ -1,0 +1,14 @@
+Start Zookeeper
+	.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+Start Kafka Broker
+	.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+Create Topic
+	.\bin\windows\kafka-topics.bat --create --topic topic-example --bootstrap-server localhost:9092
+
+Launch Kafka producer
+	.\bin\windows\kafka-console-producer.bat --topic topic-example --bootstrap-server localhost:9092
+
+Launch Kafka consumer and consume all messages from beginnning
+	.\bin\windows\kafka-console-consumer.bat --topic topic-example --from-beginning --bootstrap-server localhost:9092
